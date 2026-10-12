@@ -1,0 +1,40 @@
+<h2>Nueva cita de triaje</h2>
+
+<form #f="ngForm" (ngSubmit)="guardar()" class="formulario">
+  <label>
+    ID del paciente
+    <input type="number" name="pacienteId" [(ngModel)]="cita.pacienteId" required min="1" />
+  </label>
+
+  <label>
+    ID del doctor
+    <input type="number" name="doctorId" [(ngModel)]="cita.doctorId" required min="1" />
+  </label>
+
+  <label>
+    Prioridad
+    <select name="nivelPrioridad" [(ngModel)]="cita.nivelPrioridad" required>
+      <option value="ALTA">ALTA</option>
+      <option value="MEDIA">MEDIA</option>
+      <option value="BAJA">BAJA</option>
+    </select>
+  </label>
+
+  <label>
+    Motivo de consulta
+    <textarea name="motivoConsulta" [(ngModel)]="cita.motivoConsulta" required maxlength="255" rows="3"></textarea>
+  </label>
+
+  <label>
+    Monto de la consulta
+    <input type="number" name="montoConsulta" [(ngModel)]="cita.montoConsulta" required min="1" />
+  </label>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <button type="submit" [disabled]="f.invalid || enviando()">
+    {{ enviando() ? 'Guardando...' : 'Registrar cita' }}
+  </button>
+</form>
