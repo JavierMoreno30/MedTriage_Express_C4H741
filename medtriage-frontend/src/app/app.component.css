@@ -1,0 +1,5 @@
+.navbar { display: flex; align-items: center; gap: 20px; padding: 14px 24px; background: #0b3d91; }
+.logo { color: #fff; font-weight: 700; margin-right: auto; }
+.navbar a { color: #cfe0ff; text-decoration: none; padding: 6px 12px; border-radius: 6px; }
+.navbar a.activo { background: #fff; color: #0b3d91; }
+.contenido { padding: 24px; }
