@@ -1,0 +1,16 @@
+.filtros { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.filtros button { padding: 6px 14px; border: 1px solid #0d6efd; background: #fff; color: #0d6efd; border-radius: 6px; cursor: pointer; }
+.filtros button.activo { background: #0d6efd; color: #fff; }
+.contador { margin-left: auto; color: #666; }
+.tabla-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+th { background: #f5f5f5; }
+.badge { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; color: #fff; }
+.badge.pendiente { background: #f59f00; }
+.badge.en_atencion { background: #0d6efd; }
+.badge.atendida { background: #2f9e44; }
+.badge.cancelada { background: #e03131; }
+.avanzar { padding: 4px 10px; border: none; background: #0d6efd; color: #fff; border-radius: 6px; cursor: pointer; }
+.error { color: #e03131; }
+.vacio { text-align: center; color: #888; }

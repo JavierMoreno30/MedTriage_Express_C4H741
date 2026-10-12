@@ -1,0 +1,53 @@
+<h2>Citas médicas</h2>
+
+<div class="filtros">
+  @for (f of filtros; track f) {
+    <button type="button" [class.activo]="filtro() === f" (click)="filtro.set(f)">{{ f }}</button>
+  }
+  <span class="contador">{{ total() }} cita(s)</span>
+</div>
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+<div class="tabla-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Paciente</th>
+        <th>Doctor</th>
+        <th>Prioridad</th>
+        <th>Motivo</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (c of citasFiltradas(); track c.id) {
+        <tr>
+          <td>{{ c.codigoCita }}</td>
+          <td>{{ c.nombrePaciente }}</td>
+          <td>{{ c.nombreDoctor }}</td>
+          <td>{{ c.nivelPrioridad }}</td>
+          <td>{{ c.motivoConsulta }}</td>
+          <td>{{ c.montoConsulta | currency: 'CRC' : 'symbol-narrow' : '1.0-0' }}</td>
+          <td>{{ c.fechaCita | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td><span [class]="'badge ' + c.estado.toLowerCase()">{{ c.estado }}</span></td>
+          <td>
+            @if (siguienteEstado(c.estado); as sig) {
+              <button type="button" class="avanzar" (click)="avanzar(c)">→ {{ sig }}</button>
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="9" class="vacio">No hay citas para mostrar</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
